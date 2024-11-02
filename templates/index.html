@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual AI Chatbot</title>
+    <!-- Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.25rem;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .btn-primary {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        .result-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            Multilingual AI Chatbot
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Upload PDF File</label>
+                    <input type="file" class="form-control" id="file" name="file" accept=".pdf" required>
+                </div>
+                <div class="form-group">
+                    <label for="question">Your Question</label>
+                    <textarea class="form-control" id="question" name="question" rows="3" placeholder="Type your question here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="input_language">Select Input Language</label>
+                    <select class="form-control" id="input_language" name="input_language" required>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Turkish">Turkish</option>
+                        <option value="French">French</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="output_language">Select Output Language</label>
+                    <select class="form-control" id="output_language" name="output_language" required>
+                        <option value="English">English</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="Turkish">Turkish</option>
+                        <option value="French">French</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Get Answer</button>
+            </form>
+
+            {% if answer %}
+                <div class="result-container mt-4">
+                    <h5>Answer:</h5>
+                    <p>{{ answer }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
